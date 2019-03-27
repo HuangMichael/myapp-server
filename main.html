@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>我的E家</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="../css/app.css" />-->
+		<style>
+			.mui-slider-indicator {
+				bottom: 0;
+			}
+			
+			.mui-slider {
+				background-color: #f2f2f2;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">主页导航</h1>
+		</header>
+		<div class="mui-content">
+			<div id="Gallery" class="mui-slider" style="margin-top:15px;">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item">
+						<ul class="mui-table-view mui-grid-view mui-grid-9">
+							<li class="mui-table-view-cell mui-media mui-col-xs-4  mui-col-sm-4">
+								<a href="portal.html">
+									<span class="mui-icon mui-icon-home"></span>
+									<div class="mui-media-body">我的门户</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4  mui-col-sm-4">
+								<a href="map1.html">
+									<span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
+									<div class="mui-media-body">报修总览</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4  mui-col-sm-4">
+								<a href="map2.html">
+									<span class="mui-icon mui-icon-chatbubble"></span>
+									<div class="mui-media-body">设备报修</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4  mui-col-sm-4">
+								<a href="location_map.html">
+									<span class="mui-icon mui-icon-location"></span>
+									<div class="mui-media-body">位置报修</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4  mui-col-sm-4">
+								<a href="#">
+									<span class="mui-icon mui-icon-search"></span>
+									<div class="mui-media-body">报修查询</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4  mui-col-sm-4">
+								<a href="#">
+									<span class="mui-icon mui-icon-phone"></span>
+									<div class="mui-media-body">工单调度</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4  mui-col-sm-4">
+								<a href="#">
+									<span class="mui-icon mui-icon-gear"></span>
+									<div class="mui-media-body">维修查询</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4  mui-col-sm-4">
+								<a href="#">
+									<span class="mui-icon mui-icon-info"></span>
+									<div class="mui-media-body">维修审批</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4  mui-col-sm-4">
+								<a href="#">
+									<span class="mui-icon mui-icon-more"></span>
+									<div class="mui-media-body">其他设置</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab" id="nav">
+			<a id="tab_home" class="mui-tab-item mui-active">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a id="tab_message" class="mui-tab-item">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+			<a id="tab_contact" class="mui-tab-item" href="personal.html">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+
+			<!--<a id="tab_contact" class="mui-tab-item">
+				<span class="mui-icon mui-icon-settings"></span>
+				<span class="mui-tab-label">我的工单</span>
+			</a>-->
+		</nav>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script>
+		mui.init({
+			subpages: [ //首先加载首页  
+				{
+					url: 'main.html',
+					id: 'tab_home',
+					styles: {
+						top: '0px',
+						bottom: '60px'
+					}
+				}
+			],
+			preloadPages: [ //预加载其他页面  
+				{
+					url: 'main.html',
+					id: 'tab_message',
+					styles: {
+						top: '0px',
+						bottom: '60px'
+					}
+				},
+				{
+					url: 'html/contact.html',
+					id: 'tab_contact',
+					styles: {
+						top: '0px',
+						bottom: '60px'
+					}
+				},
+				{
+					url: 'html/setting.html',
+					id: 'tab_setting',
+					styles: {
+						top: '0px',
+						bottom: '60px'
+					}
+				}
+			]
+		});
+		mui.plusReady(function() {
+			var tab_home, tab_message, tab_contact
+			mui("#nav").on("tap", "#tab_home", function() { //点击触发   
+				tab_home = plus.webview.getWebviewById("tab_home");
+				tab_home.show()
+				tab_message.hide()
+				tab_contact.hide()
+				tab_setting.hide()
+			})
+			mui("#nav").on("tap", "#tab_message", function() { //点击触发  
+				tab_message = plus.webview.getWebviewById("tab_message");
+				tab_message.show()
+
+			})
+			mui("#nav").on("tap", "#tab_contact", function() { //点击触发  
+				tab_contact = plus.webview.getWebviewById("tab_contact");
+				tab_contact.show()
+
+			})
+			mui("#nav").on("tap", "#tab_setting", function() { //点击触发  
+				tab_setting = plus.webview.getWebviewById("tab_setting");
+				tab_setting.show()
+			})
+		})
+
+//		mui.ready(function() {
+//			var slider = document.getElementById('Gallery');
+//			var group = slider.querySelector('.mui-slider-group');
+//			var items = mui('.mui-slider-item', group);
+//			//克隆第一个节点
+//			var first = items[0].cloneNode(true);
+//			first.classList.add('mui-slider-item-duplicate');
+//			//克隆最后一个节点
+//			var last = items[items.length - 1].cloneNode(true);
+//			last.classList.add('mui-slider-item-duplicate');
+//			//处理是否循环逻辑，若支持循环，需支持两点：
+//			//1、在.mui-slider-group节点上增加.mui-slider-loop类
+//			//2、重复增加2个循环节点，图片顺序变为：N、1、2...N、1
+//			var sliderApi = mui(slider).slider();
+//
+//			function toggleLoop(loop) {
+//				if(loop) {
+//					group.classList.add('mui-slider-loop');
+//					group.insertBefore(last, group.firstChild);
+//					group.appendChild(first);
+//					sliderApi.refresh();
+//					sliderApi.gotoItem(0);
+//				} else {
+//					group.classList.remove('mui-slider-loop');
+//					group.removeChild(first);
+//					group.removeChild(last);
+//					sliderApi.refresh();
+//					sliderApi.gotoItem(0);
+//				}
+//			}
+//			//按下“循环”按钮的处理逻辑；
+//
+//			toggleLoop(true);
+//
+//		});
+	</script>
+
+</html>

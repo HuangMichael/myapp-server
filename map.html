@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+		html,
+			body {
+				background-color: #efeff4;
+				overflow: hidden;
+			}
+		}
+		#map {
+			width: 100%;
+			height: 100%;
+		}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">报修总览</h1>
+		</header>
+		<div class="mui-content">
+			<div id="map"></div>
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab" id="nav">
+			<a id="tab_home" class="mui-tab-item mui-active">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a id="tab_message" class="mui-tab-item">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+			<a id="tab_contact" class="mui-tab-item">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">通讯录</span>
+			</a>
+
+			<!--<a id="tab_contact" class="mui-tab-item">
+				<span class="mui-icon mui-icon-settings"></span>
+				<span class="mui-tab-label">我的工单</span>
+			</a>-->
+		</nav>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=H36hc5gb0CkvEXSImtCg1DPD3qImSHOQ"></script>
+		<script src="js/map.js"></script>
+	</body>
+
+</html>
